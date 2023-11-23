@@ -11,7 +11,15 @@ RUN mkdir -p \
 
 # Install OS dependencies
 RUN apt update \
-    && apt install -y curl supervisor nginx \
+    && apt install -y \
+    curl \
+    supervisor \
+    nginx \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
+    libxt6 \
+    libxaw7 \
     && rm -rf /var/lib/apt/lists/*
 
 # Get dependencies
@@ -28,6 +36,8 @@ ENV PYTHONPATH="${PYTHONPATH}:${NAOQI_PEPPER_INSTALL_FOLDER}/pynaoqi-python2.7-2
 
 # Install Choregraphe suite
 RUN tar xvzf ${DEPENDENCIES_FOLDER}/deps/choregraphe-suite.tar.gz --directory ${NAOQI_PEPPER_INSTALL_FOLDER}
+RUN cd ${NAOQI_PEPPER_INSTALL_FOLDER}/choregraphe-suite-2.5.10.7-linux64 \
+    && rm lib/libz.so.1*
 ENV PATH="${PATH}:${NAOQI_PEPPER_INSTALL_FOLDER}/choregraphe-suite-2.5.10.7-linux64/bin"
 
 # Install qibullet
