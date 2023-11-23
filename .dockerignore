@@ -1,1 +1,2 @@
-vendored_deps.tar.gz
+vendored_deps/
+.git/
