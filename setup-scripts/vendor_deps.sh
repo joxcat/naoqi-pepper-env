@@ -106,6 +106,6 @@ else
     packed_src="./vendored_deps/vendored_deps.tar.gz."
     info "Packing all the sources"
     reset_elapsed
-    tar -I "gzip -9" -cf - $deps_str | split -b 100M - "$packed_src"
+    tar -I "gzip -9" -cf - $deps_str | split -b 50M - "$packed_src"
     info "Packed all the sources in $(elapsed) to ./vendored_deps"
 fi;
