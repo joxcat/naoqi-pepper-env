@@ -1,0 +1,22 @@
+name: Naoqi Pepper Env
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build-docker-image:
+    runs-on: ubuntu-lates
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Extract vendored dependencies
+      run: ./setup-scripts/extract_deps.sh
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true

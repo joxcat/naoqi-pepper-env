@@ -1,0 +1,37 @@
+verbose: true
+
+# the ip of the simulated robot
+robot_ip: 127.0.0.1
+
+# this is the nts python webserver configuration
+# it must match the host/port in the tablet simulator web interface settings
+websocket_server:
+  host: 0.0.0.0
+  port: 31415
+
+# this is used to correct the path used by some simulators for resources (images).
+#  if enabled, if will replace the path the simulator uses with a local path (relative to web/path.html).
+# see the correct_path() method in nts.py to see how it is done
+path_correction:
+  enable: false
+  dir_to_replace: 
+  replace_with: 
+
+# if true, when starting nts.py, the web tablet will 
+# open automatically in the default browser
+auto_open_web_tablet: false
+
+# parameters for the applications displayed with loadApplication() 
+applications:
+  # the path where the application folders are located
+  directory: "{{NAOQI_PEPPER_INSTALL_FOLDER}}/apps"
+  # path to the `qimessaging.js` lib
+  lib: "{{NAOQI_PEPPER_INSTALL_FOLDER}}/libqi-js-master/libs/qimessaging/1.0/qimessaging.js"
+
+# Behavior when a second client (tablet) wants to connect to the websocket
+# if true  : when a second client tries to connect, the previous client is disconnected, the new one is connected
+# if false : when a second client tries to connect, the connection is immediately closed and the previous connection remains
+replace_connection: true
+# warning : if set to false, when you reload the page while being already connected, 
+#           the server will keep the previous connection and refuse the new one, so the connection of the refreshed page will fail.
+#           In this case you`ll need to stop nts.py and start it again' "some data for the file

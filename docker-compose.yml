@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  pepper:
+    container_name: "pepper"
+    hostname: "localhost"
+    image: "ghcr.io/joxcat/naoqi-pepper-env:latest"
+    # build:
+    #   context: .
+    network_mode: "host"
+    environment:
+      DISPLAY: $DISPLAY.0
+    privileged: true
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
