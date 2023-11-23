@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ========================= BEGIN HELPERS =============================
 c_green=""
 c_bold=""
