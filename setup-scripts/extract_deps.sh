@@ -35,11 +35,11 @@ function elapsed() {
 # Command error fail the file
 set -e
 
-vendored_deps_src="./vendored_deps.tar.gz"
-if [[ -f "$vendored_deps_src" ]]; then
+vendored_deps_src="./vendored_deps"
+if [[ -d "$vendored_deps_src" ]]; then
     info "Extracting vendored deps"
     reset_elapsed
-    tar xzf "$vendored_deps_src"
+    cat "$vendored_deps_src/vendored_deps.tar.gz."* | tar xzf -
     info "Extracted vendored deps in $(elapsed) to ./deps"
 else error "Packed vendored deps not found in $vendored_deps_src";
 fi;
